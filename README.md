@@ -4,10 +4,11 @@ In this notebook, I have implemented the concept of Ensemble Stacking for regres
 1.Data Loading and Exploration: I loaded the Boston Housing dataset and performed basic exploratory data analysis, including checking for missing values, generating summary statistics, and visualizing feature correlations using a Seaborn heatmap.
 
 2.Data Preprocessing: I split the data into 80% training and 20% testing sets. Because models like KNN and SVR are sensitive to the scale of the data, I applied standard scaling (StandardScaler) to normalize the features.
+
 3.Base Learners: I selected three diverse base models to capture different patterns in the data:
-1.K-Nearest Neighbors Regressor (n_neighbors=5)
-2.Support Vector Regressor (kernel='rbf')
-3.Decision Tree Regressor (max_depth=5)
+ 1.K-Nearest Neighbors Regressor (n_neighbors=5)
+ 2.Support Vector Regressor (kernel='rbf')
+ 3.Decision Tree Regressor (max_depth=5)
 
 4. Manual K-Fold Cross-Validation (The Core Stacking Logic): Instead of training the base models on the entire training set (which causes severe data leakage when training the meta-model), I manually implemented a 6-fold cross-validation loop. For each fold and each model, I trained on 5 folds and predicted on the holdout fold to build the oof_train matrix. Simultaneously, I generated predictions on the unseen test set and averaged them across the 6 folds to create the oof_test matrix.
 
@@ -20,7 +21,11 @@ This repository contains my implementation of an Ensemble Stacking Regressor bui
 
 Technologies Used:
 1.Python 3
+
 2.NumPy for matrix algebra and numerical computing
+
 3.Pandas for data manipulation
+
 4.Scikit-learn for base model algorithms and preprocessing
+
 5.Matplotlib and Seaborn for data visualization.
